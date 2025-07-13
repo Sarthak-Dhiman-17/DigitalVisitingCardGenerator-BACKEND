@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000") // Allow frontend to access
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "https://digital-visiting-card-generator-fro.vercel.app"
+})
 @RestController
 @RequestMapping("/api/cards")
 public class CardController {
-
     @Autowired
     private CardRepository cardRepository;
 
@@ -30,3 +32,4 @@ public class CardController {
         return cardRepository.findById(id).orElse(null);
     }
 }
+
